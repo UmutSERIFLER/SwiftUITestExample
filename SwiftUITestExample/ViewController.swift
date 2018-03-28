@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIPageViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSwipeWithDirections()
+        setSwipingMethodsUsingGesture()
         _pageControl.numberOfPages = 5
         _pageControl.backgroundColor = UIColor.blue
         _pageControl.addTarget(self, action: #selector(self.valueChanged), for: UIControlEvents.valueChanged)
@@ -29,6 +29,7 @@ class ViewController: UIViewController, UIPageViewControllerDelegate {
     }
 
     //The @objc attribute makes your Swift API available in Objective-C and the Objective-C runtime.
+    // This method works for changing background colour according to page number, if page number is odd, background colour will be blue
     @objc func valueChanged() {
         if ((_pageControl.currentPage % 2) == 0) {
             _pageControl.backgroundColor = UIColor.blue
@@ -38,7 +39,8 @@ class ViewController: UIViewController, UIPageViewControllerDelegate {
         print("YEEAAHHH You did it.")
     }
     
-    func setSwipeWithDirections(){
+    // This methods works for capturing gesture actions using gesture recognation
+    func setSwipingMethodsUsingGesture(){
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.swiped(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
@@ -64,7 +66,6 @@ class ViewController: UIViewController, UIPageViewControllerDelegate {
         {
             switch swipeGesture.direction
             {
-                
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped Right")
             case UISwipeGestureRecognizerDirection.left:
@@ -73,7 +74,6 @@ class ViewController: UIViewController, UIPageViewControllerDelegate {
                 print("Swiped Up")
             case UISwipeGestureRecognizerDirection.down:
                 print("Swiped Down")
-                
             default:
                 break
             }
