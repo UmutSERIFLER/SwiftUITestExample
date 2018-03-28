@@ -33,10 +33,10 @@ class SwiftUITestExampleUITests: XCTestCase {
         super.tearDown()
     }
     
+    // To start UI Test, press "ok" sign on the left side of testExample method after build
     func testExample() {
         
         app.launch()
-        
         app.swipeRight()
         app.swipeRight()
         app.swipeRight()
